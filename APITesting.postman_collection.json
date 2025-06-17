@@ -1,197 +1,25 @@
 {
 	"info": {
-		"_postman_id": "65a43920-d71f-4d6f-a421-affca6b5a327",
+		"_postman_id": "e172e471-bf54-4be9-8e8e-8aadad301130",
 		"name": "API Testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16825267",
-		"_collection_link": "https://interstellar-crater-618961.postman.co/workspace/CNATSJun2025~0a0147b3-3490-4115-ad59-426a16d21ddd/collection/16825267-65a43920-d71f-4d6f-a421-affca6b5a327?action=share&source=collection_link&creator=16825267"
+		"_exporter_id": "45867085",
+		"_collection_link": "https://anupambhattacharya.postman.co/workspace/Anupam-Bhattacharya's-Workspace~193d935d-73d9-4eac-85dc-91e5ea7a0b65/collection/45867085-e172e471-bf54-4be9-8e8e-8aadad301130?action=share&source=collection_link&creator=45867085"
 	},
 	"item": [
 		{
-			"name": "GET Req",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"Miror\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check JSON Data\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.id).to.eql(15);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check title\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.title).to.eql(\"Wooden Bathroom Sink With Mirror\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"let jsonData = pm.response.json();\r",
-							"// Check if any review has rating 5\r",
-							"let hasFiveStar = jsonData.reviews.some(review => review.rating === 5);\r",
-							"\r",
-							"let hasPleasedComment = jsonData.reviews.some(review =>\r",
-							"    review.comment.toLowerCase().includes(\"Pleased\"));\r",
-							"\r",
-							"pm.test(\"At least one review has a rating of 5\", function () {\r",
-							"    pm.expect(hasFiveStar).to.be.true;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"At least one review comment contains the word 'Pleased'\", function () {\r",
-							"    pm.expect(hasPleasedComment).to.be.true;\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
+			"name": "Check JSON Values",
 			"request": {
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://dummyjson.com/products/15",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"15"
-					]
-				}
+				"header": []
 			},
 			"response": []
 		},
 		{
-			"name": "GET 2",
+			"name": "Test POST Request",
 			"request": {
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://dummyjson.com/products/search?q=phone",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"search"
-					],
-					"query": [
-						{
-							"key": "q",
-							"value": "phone"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Req",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Smitha's own product\",\r\n    \"description\": \"This is the description of my product.\",\r\n    \"category\": \"furniture\",\r\n    \"price\": 4.99,\r\n    \"discountPercentage\": 9.33,\r\n    \"rating\": 5.0\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dummyjson.com/products/add",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"add"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT Req",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Smitha Product\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dummyjson.com/products/20",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"20"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE Req",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://dummyjson.com/products/20",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"20"
-					]
-				}
+				"header": []
 			},
 			"response": []
 		}
